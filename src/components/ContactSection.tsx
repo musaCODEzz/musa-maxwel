@@ -1,405 +1,208 @@
 "use client";
 
 import React, { useState } from "react";
-import { Mail, Copy, Check, Send, MapPin, Clock, MessageSquare } from "lucide-react";
-import { GithubIcon, LinkedinIcon, TwitterXIcon } from "./Icons";
 import { PORTFOLIO_DATA } from "@/data/portfolioData";
 
 export default function ContactSection() {
   const [copied, setCopied] = useState(false);
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    subject: "",
-    message: ""
-  });
-  const [sentSuccess, setSentSuccess] = useState(false);
 
   const handleCopyEmail = () => {
     navigator.clipboard.writeText(PORTFOLIO_DATA.email);
     setCopied(true);
-    setTimeout(() => setCopied(false), 2500);
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!formData.name || !formData.email || !formData.message) return;
-
-    // Trigger user mail client with pre-filled content
-    const mailtoUrl = `mailto:${PORTFOLIO_DATA.email}?subject=${encodeURIComponent(
-      formData.subject || `Inquiry from ${formData.name}`
-    )}&body=${encodeURIComponent(
-      `Hi Musa,\n\n${formData.message}\n\nFrom: ${formData.name} (${formData.email})`
-    )}`;
-
-    window.open(mailtoUrl, "_blank");
-    setSentSuccess(true);
-    setTimeout(() => setSentSuccess(false), 5000);
+    setTimeout(() => setCopied(false), 2000);
   };
 
   return (
     <section id="contact" className="contact-section">
       <div className="container">
-        <div className="section-header">
-          <span className="section-tag">Let&apos;s Build Together</span>
-          <h2 className="section-title">Initiate Contact</h2>
-          <p className="section-desc">
-            Whether you have a software engineering role, distributed system architecture to design, or a consulting project in mind — let&apos;s connect.
-          </p>
-        </div>
-
         <div className="contact-grid">
-          {/* Direct Info Card */}
-          <div className="contact-info-card glass-card">
-            <h3 className="card-headline">Direct Channels</h3>
-            <p className="card-sub">
-              Fastest response via email. I typically respond within 24 hours.
+          {/* Left Column: Big Headline */}
+          <div className="contact-headline-col">
+            <span className="section-tag">004 / Contact</span>
+            <h2 className="headline-text">
+              Let&apos;s build
+              <br />
+              <span className="italic-accent">something</span>
+              <br />
+              together<span className="dot-primary">.</span>
+            </h2>
+            <p className="contact-subtext">
+              I&apos;m open to backend engineering roles, fullstack positions, and select engineering consulting engagements. If you&apos;re working on something interesting, let&apos;s talk.
             </p>
-
-            <div className="email-display-box">
-              <div className="email-row">
-                <Mail size={18} className="text-emerald" />
-                <span className="email-text">{PORTFOLIO_DATA.email}</span>
-              </div>
-              <button
-                onClick={handleCopyEmail}
-                className="copy-btn"
-                aria-label="Copy Email address"
-              >
-                {copied ? <Check size={16} className="text-emerald" /> : <Copy size={16} />}
-                <span>{copied ? "Copied" : "Copy"}</span>
-              </button>
-            </div>
-
-            <div className="meta-details">
-              <div className="meta-item">
-                <MapPin size={16} className="text-cyan" />
-                <span>Nairobi, Kenya (UTC +3)</span>
-              </div>
-              <div className="meta-item">
-                <Clock size={16} className="text-emerald" />
-                <span>Available for Remote Global & Local Contracting</span>
-              </div>
-            </div>
-
-            <div className="social-links-title">Social Profiles & Code:</div>
-            <div className="social-buttons">
-              <a
-                href={PORTFOLIO_DATA.socials.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="social-btn"
-                aria-label="GitHub Profile"
-              >
-                <GithubIcon size={18} />
-                <span>GitHub</span>
-              </a>
-
-              <a
-                href={PORTFOLIO_DATA.socials.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="social-btn"
-                aria-label="LinkedIn Profile"
-              >
-                <LinkedinIcon size={18} className="text-cyan" />
-                <span>LinkedIn</span>
-              </a>
-
-              <a
-                href={PORTFOLIO_DATA.socials.twitter}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="social-btn"
-                aria-label="Twitter / X Profile"
-              >
-                <TwitterXIcon size={16} />
-                <span>Twitter / X</span>
-              </a>
-            </div>
           </div>
 
-          {/* Direct Message Form */}
-          <div className="contact-form-card glass-card">
-            <h3 className="card-headline">Send a Direct Message</h3>
-            <p className="card-sub">
-              Fill out the details below and it will compose a formatted message directly to Musa Maxwell.
-            </p>
-
-            <form onSubmit={handleSubmit} className="contact-form">
-              <div className="form-row">
-                <div className="input-group">
-                  <label htmlFor="name" className="input-label">Your Name</label>
-                  <input
-                    id="name"
-                    type="text"
-                    required
-                    value={formData.name}
-                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    placeholder="e.g. Alex Chen"
-                    className="form-input"
-                  />
-                </div>
-
-                <div className="input-group">
-                  <label htmlFor="email" className="input-label">Your Email</label>
-                  <input
-                    id="email"
-                    type="email"
-                    required
-                    value={formData.email}
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    placeholder="alex@company.com"
-                    className="form-input"
-                  />
-                </div>
-              </div>
-
-              <div className="input-group">
-                <label htmlFor="subject" className="input-label">Subject</label>
-                <input
-                  id="subject"
-                  type="text"
-                  value={formData.subject}
-                  onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                  placeholder="Software Engineering Role / Project Inquiry"
-                  className="form-input"
-                />
-              </div>
-
-              <div className="input-group">
-                <label htmlFor="message" className="input-label">Message</label>
-                <textarea
-                  id="message"
-                  required
-                  rows={4}
-                  value={formData.message}
-                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  placeholder="Describe your project, timeline, or open role..."
-                  className="form-input form-textarea"
-                />
-              </div>
-
-              <button type="submit" className="btn-primary form-submit-btn">
-                <Send size={16} />
-                <span>Dispatch Email Message</span>
+          {/* Right Column: Channels & Socials */}
+          <div className="contact-channels-col">
+            {/* Email with copy */}
+            <div className="channel-block">
+              <span className="channel-label">Email</span>
+              <button
+                onClick={handleCopyEmail}
+                className="channel-value-btn group"
+                aria-label="Copy Email address"
+              >
+                <span>{PORTFOLIO_DATA.email}</span>
+                <span className="copy-badge">
+                  {copied ? "Copied!" : "Copy"}
+                </span>
               </button>
+            </div>
 
-              {sentSuccess && (
-                <div className="success-msg">
-                  <Check size={16} className="text-emerald" />
-                  <span>Email client triggered! Thank you for reaching out.</span>
-                </div>
-              )}
-            </form>
+            {/* Location */}
+            <div className="channel-block">
+              <span className="channel-label">Location</span>
+              <div className="channel-value-text">
+                Nairobi, Kenya (+254)
+              </div>
+            </div>
+
+            {/* Socials / Elsewhere */}
+            <div className="channel-block elsewhere-block">
+              <span className="channel-label">Elsewhere</span>
+              <div className="social-links-row">
+                {PORTFOLIO_DATA.socials.map((s) => (
+                  <a
+                    key={s.label}
+                    href={s.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="social-anchor"
+                  >
+                    {s.label}
+                  </a>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </div>
 
       <style jsx>{`
         .contact-section {
-          padding: 80px 0;
-          position: relative;
+          padding: 120px 0 100px 0;
+          border-top: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         .contact-grid {
           display: grid;
-          grid-template-columns: repeat(2, 1fr);
-          gap: 28px;
+          grid-template-columns: 7fr 5fr;
+          gap: 60px;
+          align-items: flex-start;
         }
 
-        .contact-info-card,
-        .contact-form-card {
-          padding: 32px;
+        .contact-headline-col {
           display: flex;
           flex-direction: column;
         }
 
-        .card-headline {
-          font-size: 1.4rem;
-          font-weight: 700;
-          color: #fff;
-          margin-bottom: 6px;
+        .headline-text {
+          font-size: clamp(2.75rem, 6.5vw, 5rem);
+          font-weight: 300;
+          line-height: 0.95;
+          letter-spacing: -0.03em;
+          color: #ffffff;
         }
 
-        .card-sub {
-          font-size: 0.925rem;
-          color: var(--text-secondary);
-          margin-bottom: 24px;
-          line-height: 1.5;
+        .italic-accent {
+          font-style: italic;
+          font-weight: 300;
         }
 
-        .email-display-box {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          padding: 14px 18px;
-          background: rgba(0, 0, 0, 0.4);
-          border: 1px solid var(--border-subtle);
-          border-radius: var(--radius-md);
-          margin-bottom: 24px;
+        .dot-primary {
+          color: var(--primary);
         }
 
-        .email-row {
-          display: flex;
-          align-items: center;
-          gap: 10px;
+        .contact-subtext {
+          font-size: 1rem;
+          color: var(--muted-foreground);
+          line-height: 1.7;
+          font-weight: 300;
+          max-width: 480px;
+          margin-top: 32px;
         }
 
-        .email-text {
-          font-family: var(--font-mono);
-          font-size: 0.95rem;
-          color: #f1f5f9;
-        }
-
-        .copy-btn {
-          display: inline-flex;
-          align-items: center;
-          gap: 6px;
-          padding: 6px 12px;
-          background: rgba(255, 255, 255, 0.08);
-          border: 1px solid var(--border-subtle);
-          border-radius: var(--radius-sm);
-          color: var(--text-primary);
-          font-size: 0.8rem;
-          font-family: var(--font-mono);
-          transition: all var(--transition-fast);
-        }
-
-        .copy-btn:hover {
-          background: rgba(16, 185, 129, 0.2);
-          border-color: var(--border-emerald);
-          color: #fff;
-        }
-
-        .meta-details {
+        .contact-channels-col {
           display: flex;
           flex-direction: column;
-          gap: 12px;
-          margin-bottom: 28px;
-          padding-bottom: 20px;
-          border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+          gap: 36px;
+          padding-top: 20px;
         }
 
-        .meta-item {
+        .channel-block {
           display: flex;
-          align-items: center;
-          gap: 10px;
-          font-size: 0.9rem;
-          color: var(--text-secondary);
+          flex-direction: column;
+          gap: 8px;
         }
 
-        .social-links-title {
-          font-size: 0.8rem;
+        .channel-label {
           font-family: var(--font-mono);
-          color: var(--text-muted);
+          font-size: 0.725rem;
+          letter-spacing: 0.2em;
           text-transform: uppercase;
-          letter-spacing: 0.05em;
-          margin-bottom: 12px;
+          color: var(--muted-foreground);
         }
 
-        .social-buttons {
+        .channel-value-btn {
           display: flex;
-          gap: 10px;
+          align-items: center;
+          gap: 12px;
+          font-size: clamp(1.2rem, 2vw, 1.6rem);
+          font-weight: 300;
+          color: #ffffff;
+          transition: color 0.2s ease;
+          text-align: left;
+        }
+
+        .channel-value-btn:hover {
+          color: var(--primary);
+        }
+
+        .copy-badge {
+          font-family: var(--font-mono);
+          font-size: 0.75rem;
+          color: var(--muted-foreground);
+          transition: color 0.2s ease;
+        }
+
+        .channel-value-btn:hover .copy-badge {
+          color: var(--primary);
+        }
+
+        .channel-value-text {
+          font-size: clamp(1.1rem, 1.8vw, 1.4rem);
+          font-weight: 300;
+          color: #ffffff;
+        }
+
+        .elsewhere-block {
+          border-top: 1px solid rgba(255, 255, 255, 0.06);
+          padding-top: 24px;
+        }
+
+        .social-links-row {
+          display: flex;
+          align-items: center;
+          gap: 24px;
           flex-wrap: wrap;
         }
 
-        .social-btn {
-          display: inline-flex;
-          align-items: center;
-          gap: 8px;
-          padding: 10px 16px;
-          background: rgba(255, 255, 255, 0.04);
-          border: 1px solid var(--border-subtle);
-          border-radius: var(--radius-md);
-          font-size: 0.85rem;
-          font-weight: 500;
-          color: var(--text-primary);
-          transition: all var(--transition-fast);
-        }
-
-        .social-btn:hover {
-          background: rgba(255, 255, 255, 0.1);
-          border-color: rgba(255, 255, 255, 0.2);
-          transform: translateY(-2px);
-        }
-
-        .contact-form {
-          display: flex;
-          flex-direction: column;
-          gap: 16px;
-        }
-
-        .form-row {
-          display: grid;
-          grid-template-columns: repeat(2, 1fr);
-          gap: 14px;
-        }
-
-        .input-group {
-          display: flex;
-          flex-direction: column;
-          gap: 6px;
-        }
-
-        .input-label {
-          font-size: 0.8rem;
+        .social-anchor {
           font-family: var(--font-mono);
-          color: var(--text-secondary);
+          font-size: 0.75rem;
+          letter-spacing: 0.15em;
+          text-transform: uppercase;
+          color: var(--muted-foreground);
+          transition: color 0.2s ease;
         }
 
-        .form-input {
-          padding: 12px 14px;
-          background: rgba(0, 0, 0, 0.35);
-          border: 1px solid var(--border-subtle);
-          border-radius: var(--radius-md);
-          color: #fff;
-          font-size: 0.9rem;
-          font-family: inherit;
-          outline: none;
-          transition: border-color var(--transition-fast);
-        }
-
-        .form-input:focus {
-          border-color: var(--accent-emerald);
-          box-shadow: 0 0 10px rgba(16, 185, 129, 0.2);
-        }
-
-        .form-textarea {
-          resize: vertical;
-          min-height: 100px;
-        }
-
-        .form-submit-btn {
-          margin-top: 6px;
-          width: 100%;
-        }
-
-        .success-msg {
-          display: flex;
-          align-items: center;
-          gap: 8px;
-          padding: 10px 14px;
-          background: rgba(16, 185, 129, 0.1);
-          border: 1px solid var(--border-emerald);
-          border-radius: var(--radius-md);
-          font-size: 0.85rem;
-          color: var(--accent-emerald-bright);
-        }
-
-        .text-emerald {
-          color: var(--accent-emerald-bright);
-        }
-        .text-cyan {
-          color: var(--accent-cyan-bright);
+        .social-anchor:hover {
+          color: var(--primary);
         }
 
         @media (max-width: 860px) {
           .contact-grid {
             grid-template-columns: 1fr;
-          }
-          .form-row {
-            grid-template-columns: 1fr;
+            gap: 48px;
           }
         }
       `}</style>

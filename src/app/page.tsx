@@ -1,22 +1,20 @@
-import Header from "@/components/Header";
+import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
-import InteractiveTerminal from "@/components/InteractiveTerminal";
-import ProjectsSection from "@/components/ProjectsSection";
-import SkillsSection from "@/components/SkillsSection";
-import StatsSection from "@/components/StatsSection";
+import AboutSection from "@/components/AboutSection";
+import WorkSection from "@/components/WorkSection";
+import ExperienceSection from "@/components/ExperienceSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
     <div className="portfolio-app">
-      <Header />
+      <Navbar />
       <main className="portfolio-main">
         <Hero />
-        <InteractiveTerminal />
-        <ProjectsSection />
-        <SkillsSection />
-        <StatsSection />
+        <AboutSection />
+        <WorkSection />
+        <ExperienceSection />
         <ContactSection />
       </main>
       <Footer />

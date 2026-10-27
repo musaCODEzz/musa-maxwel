@@ -1,318 +1,172 @@
-export interface Project {
-  id: string;
-  title: string;
-  category: "fullstack" | "backend" | "web3" | "tools";
-  categoryLabel: string;
-  tagline: string;
-  description: string;
-  highlights: string[];
-  techStack: string[];
-  liveUrl?: string;
-  githubUrl: string;
-  apiDocsUrl?: string;
-  featured: boolean;
-  status: "Live Production" | "Active Demo" | "Open Source" | "In Development";
-  stats?: string;
+export interface NavItem {
+  label: string;
+  href: string;
 }
 
-export interface SkillCategory {
+export interface SkillGroup {
+  category: string;
+  items: string[];
+}
+
+export interface ProjectItem {
+  number: string;
   title: string;
   description: string;
-  skills: { name: string; level: string; icon?: string }[];
+  tags: string[];
+  year: string;
+  githubUrl: string;
+  liveUrl?: string;
+  apiDocsUrl?: string;
+}
+
+export interface ExperienceItem {
+  role: string;
+  company: string;
+  period: string;
+  description: string;
 }
 
 export const PORTFOLIO_DATA = {
   name: "Musa Maxwell",
+  initials: "MM",
   handle: "musaCODEzz",
-  title: "Full-Stack Software Engineer & Distributed Systems Builder",
-  location: "Nairobi, Kenya (+254)",
+  title: "Fullstack Engineer & Systems Builder",
+  location: "Nairobi, Kenya",
   email: "musamaxwell15@gmail.com",
-  status: "Available for High-Impact Roles & Contracting",
-  bio: "Talk less — Show me the code. I build resilient web applications, developer-first APIs, and fraud-resistant automotive systems that scale seamlessly.",
-  metrics: [
-    { label: "Public Repositories", value: "60+" },
-    { label: "Primary Focus", value: "TypeScript & Python" },
-    { label: "Core Architecture", value: "REST / Microservices" },
-    { label: "Deployment Targets", value: "Vercel / Render / AWS" },
+  phone: "+254 700 000 000",
+  status: "Available for fullstack & backend roles",
+  bioHeadline: "I build systems that scale — from API design and vehicle verification engines to distributed cloud platforms. Based in Nairobi, working with teams across Africa and beyond.",
+
+  nav: [
+    { label: "About", href: "#about" },
+    { label: "Work", href: "#projects" },
+    { label: "Experience", href: "#experience" },
+    { label: "Contact", href: "#contact" }
+  ] as NavItem[],
+
+  stats: [
+    { n: "60+", label: "Public Repos" },
+    { n: "3+", label: "Live Systems" },
+    { n: "+254", label: "Nairobi, Kenya" }
   ],
-  socials: {
-    github: "https://github.com/musaCODEzz",
-    linkedin: "https://www.linkedin.com/in/musaCODEzz",
-    twitter: "https://twitter.com/musaCODEzz",
-    email: "mailto:musamaxwell15@gmail.com",
+
+  about: {
+    tag: "001 / About",
+    headingLine1: "Built for",
+    headingLine2: "scale.",
+    paragraphs: [
+      "I'm a fullstack software engineer with deep roots in African web and fintech infrastructure. Over the past several years, I've focused on shipping software that real people depend on — anti-fraud automotive verification engines, developer publication hubs, and mobile money payment microservices.",
+      "My technical work spans the full stack: I'm equally at home architecting anti-rollback verification algorithms in TypeScript, designing high-throughput REST APIs with OpenAPI/Swagger, or crafting responsive, accessible user interfaces. I believe good engineering is fundamentally about clarity — in code, in communication, and in real-world reliability.",
+      "Outside of software engineering, I explore automotive technologies, contribute to open-source developer tooling on GitHub (@musaCODEzz), and engage with Nairobi's vibrant developer community."
+    ],
+    skills: [
+      {
+        category: "Frontend",
+        items: ["React", "Next.js", "TypeScript", "Modern CSS", "Vite"]
+      },
+      {
+        category: "Backend",
+        items: ["Node.js", "Express.js", "Python", "FastAPI", "REST APIs"]
+      },
+      {
+        category: "Databases",
+        items: ["PostgreSQL", "MongoDB", "Redis", "SQLite"]
+      },
+      {
+        category: "Practices & DevOps",
+        items: ["Docker", "GitHub Actions", "System Design", "Vitest / Jest", "Vercel / Render"]
+      }
+    ] as SkillGroup[]
   },
+
   projects: [
     {
-      id: "autolog-ke",
+      number: "01",
       title: "AutoLog KE",
-      category: "fullstack",
-      categoryLabel: "Automotive & FinTech",
-      tagline: "Vehicle Passport & Anti-Rollback Odometer Verification Engine",
       description:
-        "Kenya's digital vehicle passport, anti-rollback odometer verification platform, and verified spare-parts RFQ engine engineered to eliminate used-car fraud across East Africa.",
-      highlights: [
-        "Anti-Clocking Curve: Mathematical anomaly detection flagging mileage rollback tampering.",
-        "Privacy-Preserving Passports: Publicly verifiable vehicle URLs (/passport/:slug) with masked registration plates (KD* ***P).",
-        "East African Localization: Custom Kenyan plate normalization and E.164 (+254) phone standardization.",
-        "Spare-parts RFQ engine connecting vehicle owners directly with vetted merchants."
-      ],
-      techStack: ["TypeScript", "Express.js", "MongoDB", "Vitest", "Modern CSS", "Docker"],
+        "Kenya's digital vehicle passport and anti-rollback odometer verification platform engineered to eliminate used-car fraud in East Africa. Features privacy-preserving vehicle URLs (/passport/:slug), mathematical rollback curve anomaly detection, and a verified spare-parts RFQ engine.",
+      tags: ["TypeScript", "Express.js", "MongoDB", "Vitest", "Docker"],
+      year: "2026",
       githubUrl: "https://github.com/musaCODEzz/autolog-backend",
-      featured: true,
-      status: "Open Source",
-      stats: "Core API & Verification Engine"
+      liveUrl: undefined
     },
     {
-      id: "stackpulse",
+      number: "02",
       title: "StackPulse (BLOG-API)",
-      category: "fullstack",
-      categoryLabel: "Developer Platform",
-      tagline: "Full-Stack Developer Publishing Engine & OpenAPI Hub",
       description:
-        "A full-stack, production-grade developer publication engine featuring interactive API documentation, transactional auth, and real-time social metrics.",
-      highlights: [
-        "Security & Auth: Dual JWT architecture with refresh token rotation, Google OAuth 2.0, and transactional password recovery via Resend.",
-        "Engagement Engine: Atomic clap and bookmark toggles, dynamic reading-time estimator, and view analytics.",
-        "Interactive API Suite: Complete OpenAPI / Swagger UI suite with automated Vitest integration test suites.",
-        "Cloud Deployment: Zero-downtime CI/CD deployment with frontend on Vercel and backend on Render."
-      ],
-      techStack: ["TypeScript", "React", "Express.js", "Swagger / OpenAPI", "Vitest", "Render", "Vercel"],
-      liveUrl: "https://blog-api-frontend-neon.vercel.app/",
-      apiDocsUrl: "https://blog-api-backend-mh0s.onrender.com/api-docs",
+        "Production-grade developer publication engine featuring interactive OpenAPI / Swagger UI documentation, dual JWT authentication with refresh token rotation, Google OAuth 2.0, and automated Vitest test suites. Frontend deployed on Vercel, backend hosted on Render.",
+      tags: ["TypeScript", "React", "Express.js", "Swagger", "Render", "Vercel"],
+      year: "2026",
       githubUrl: "https://github.com/musaCODEzz/BLOG-API-FRONTEND",
-      featured: true,
-      status: "Live Production",
-      stats: "Live on Vercel & Render"
+      liveUrl: "https://blog-api-frontend-neon.vercel.app/",
+      apiDocsUrl: "https://blog-api-backend-mh0s.onrender.com/api-docs"
     },
     {
-      id: "nexa-kenya",
+      number: "03",
       title: "Nexa Kenya",
-      category: "fullstack",
-      categoryLabel: "Full-Stack Web App",
-      tagline: "Digital Experience & Modern Services Platform",
       description:
-        "Modern business and web application platform delivering intuitive service discovery, interactive digital experiences, and rapid performance.",
-      highlights: [
-        "Built with modern client-server architecture ensuring sub-second initial contentful paint.",
-        "Responsive, mobile-first design with fluid transitions and accessible interactive states.",
-        "Fully deployed and hosted on Vercel with automated branch previews and continuous deployment."
-      ],
-      techStack: ["Next.js", "TypeScript", "Modern CSS", "Vercel"],
-      liveUrl: "https://nexa-kenya.vercel.app/",
+        "Modern business and web application platform delivering intuitive service discovery, interactive digital experiences, and sub-second paint times. Built with Next.js and deployed continuously on Vercel.",
+      tags: ["Next.js", "TypeScript", "Modern CSS", "Vercel"],
+      year: "2026",
       githubUrl: "https://github.com/musaCODEzz/eMobilis-Fullstack-Dev",
-      featured: true,
-      status: "Live Production",
-      stats: "Hosted on Vercel"
+      liveUrl: "https://nexa-kenya.vercel.app/"
     },
     {
-      id: "mpesa-daraja",
+      number: "04",
       title: "M-Pesa DARAJA Gateway",
-      category: "backend",
-      categoryLabel: "Fintech & Payments",
-      tagline: "Safaricom M-Pesa STK Push & Settlement Integration",
       description:
-        "Engineered backend integration for Safaricom's M-Pesa DARAJA API powering seamless mobile money transactions for East African e-commerce.",
-      highlights: [
-        "STK Push (Lipa Na M-Pesa Online) initiation with cryptographic timestamp generation.",
-        "Webhook listener with signature verification, handling instant callback processing.",
-        "Automated OAuth token caching and renewal before expiration.",
-        "Comprehensive transaction status inquiry and reconciliation logging."
-      ],
-      techStack: ["Node.js", "JavaScript", "Express.js", "Axios", "REST API"],
-      githubUrl: "https://github.com/musaCODEzz/MPESA-DARAJA-API",
-      featured: true,
-      status: "Open Source",
-      stats: "Payments Integration"
+        "Backend payment microservice integrating Safaricom's M-Pesa DARAJA API. Handles STK Push (Lipa Na M-Pesa Online), cryptographic OAuth token caching, and resilient callback webhook listeners with signature verification.",
+      tags: ["Node.js", "Express.js", "REST API", "Axios"],
+      year: "2024",
+      githubUrl: "https://github.com/musaCODEzz/MPESA-DARAJA-API"
     },
     {
-      id: "shop-api",
+      number: "05",
       title: "E-Commerce Shop API",
-      category: "backend",
-      categoryLabel: "Distributed Backend",
-      tagline: "High-Throughput Inventory & Order Processing API",
       description:
-        "Scalable e-commerce backend built with TypeScript, managing multi-tier product catalogs, user cart states, and resilient order workflows.",
-      highlights: [
-        "High-performance MongoDB aggregation pipelines for instant product filtering and sorting.",
-        "JWT-secured customer and admin role-based access control (RBAC).",
-        "Strict input validation and sanitization preventing injection attacks.",
-        "Structured RESTful endpoints following OpenAPI industry conventions."
-      ],
-      techStack: ["TypeScript", "Node.js", "Express.js", "MongoDB", "JWT"],
-      githubUrl: "https://github.com/musaCODEzz/shop-api",
-      featured: false,
-      status: "Open Source",
-      stats: "E-Commerce Core"
+        "Scalable e-commerce backend built with TypeScript, managing multi-tier product catalogs, user cart states, and resilient order workflows using high-performance MongoDB aggregation pipelines and JWT role-based access control.",
+      tags: ["TypeScript", "Node.js", "Express.js", "MongoDB", "JWT"],
+      year: "2026",
+      githubUrl: "https://github.com/musaCODEzz/shop-api"
     },
     {
-      id: "voting-dapp",
+      number: "06",
       title: "On-Chain Voting DApp",
-      category: "web3",
-      categoryLabel: "Web3 & Blockchain",
-      tagline: "Decentralized Governance & Transparent Balloting Protocol",
       description:
-        "Ethereum-based voting decentralized application engineered with Solidity smart contracts and Hardhat for tamper-proof governance.",
-      highlights: [
-        "Auditable smart contract logic preventing double voting and unauthorized chairperson overrides.",
-        "Local testnet simulation, unit tests, and contract deployment scripts using Hardhat.",
-        "Gas-optimized state variables and event emitters for transparency on etherscan."
-      ],
-      techStack: ["Solidity", "Hardhat", "JavaScript", "Ethereum / Web3"],
-      githubUrl: "https://github.com/musaCODEzz/voting-dapp",
-      featured: false,
-      status: "Open Source",
-      stats: "Solidity / Hardhat"
-    },
-    {
-      id: "finance-manager",
-      title: "Personal Finance Manager",
-      category: "tools",
-      categoryLabel: "Python & Analytics",
-      tagline: "Income, Expense & Budget Analytics Engine",
-      description:
-        "Python application designed for personal capital management, expense classification, budget thresholds, and analytical reporting.",
-      highlights: [
-        "Automated spending categorization and budget variance calculation.",
-        "Structured data persistence with robust CSV and SQLite transaction handling.",
-        "CLI and visual summary reports identifying expenditure leaks and saving targets."
-      ],
-      techStack: ["Python", "SQLite", "Data Analysis", "OOP Architecture"],
-      githubUrl: "https://github.com/musaCODEzz/Personal_Finance_Manager",
-      featured: false,
-      status: "Open Source",
-      stats: "Python / Data"
-    },
-    {
-      id: "climate-api",
-      title: "Global Climate News API",
-      category: "backend",
-      categoryLabel: "Data & Scraping",
-      tagline: "Aggregated Climate & Environmental News Service",
-      description:
-        "Real-time news aggregation API collecting and standardizing worldwide environmental and climate updates from multiple leading publications.",
-      highlights: [
-        "Concurrent web scraping engine extracting clean headline and source metadata.",
-        "Normalized REST endpoints with source-specific filtering and pagination.",
-        "In-memory caching reducing redundant outgoing HTTP traffic."
-      ],
-      techStack: ["Node.js", "Express.js", "Axios", "Cheerio"],
-      githubUrl: "https://github.com/musaCODEzz/Climate-API",
-      featured: false,
-      status: "Open Source",
-      stats: "News Aggregator"
+        "Ethereum-based voting decentralized application engineered with Solidity smart contracts and Hardhat for auditable, tamper-proof governance ballots with gas-optimized state structures.",
+      tags: ["Solidity", "Hardhat", "JavaScript", "Web3.js"],
+      year: "2023",
+      githubUrl: "https://github.com/musaCODEzz/voting-dapp"
     }
-  ] as Project[],
+  ] as ProjectItem[],
 
-  skills: [
+  experience: [
     {
-      title: "Core Languages",
-      description: "Strong foundational type-safe languages and scripting",
-      skills: [
-        { name: "TypeScript", level: "Advanced" },
-        { name: "JavaScript (ES6+)", level: "Advanced" },
-        { name: "Python", level: "Proficient" },
-        { name: "SQL (PostgreSQL)", level: "Proficient" },
-        { name: "Solidity", level: "Familiar" }
-      ]
+      role: "Full-Stack Software Engineer & Platform Builder",
+      company: "AutoLog KE / Independent",
+      period: "2025 — Present",
+      description:
+        "Architecting Kenya's vehicle passport verification platform and developer tooling. Built mathematical anti-clocking algorithms to detect odometer fraud, standardized Kenyan vehicle registration and phone normalization rules, and authored OpenAPI-compliant REST APIs backed by Vitest automated test suites."
     },
     {
-      title: "Backend & Systems",
-      description: "Resilient server architecture, APIs, and microservices",
-      skills: [
-        { name: "Node.js", level: "Advanced" },
-        { name: "Express.js", level: "Advanced" },
-        { name: "REST API Design", level: "Advanced" },
-        { name: "Swagger / OpenAPI", level: "Proficient" },
-        { name: "FastAPI / Python", level: "Proficient" },
-        { name: "Socket.io", level: "Proficient" }
-      ]
+      role: "Full-Stack Engineer",
+      company: "StackPulse & Web Platforms",
+      period: "2024 — 2025",
+      description:
+        "Developed full-stack developer publishing platforms using TypeScript, React, and Node.js. Architected dual JWT authentication flows with refresh token rotation, integrated Google OAuth 2.0, built live Swagger UI suites, and deployed zero-downtime CI/CD workflows across Vercel and Render."
     },
     {
-      title: "Databases & Caching",
-      description: "Data modeling, indexing, aggregation, and caching strategies",
-      skills: [
-        { name: "PostgreSQL", level: "Proficient" },
-        { name: "MongoDB & Mongoose", level: "Advanced" },
-        { name: "Redis", level: "Proficient" },
-        { name: "SQLite", level: "Proficient" }
-      ]
-    },
-    {
-      title: "Frontend Engineering",
-      description: "Responsive, high-performance UI and component systems",
-      skills: [
-        { name: "React", level: "Advanced" },
-        { name: "Next.js (App Router)", level: "Advanced" },
-        { name: "Modern CSS / CSS3", level: "Advanced" },
-        { name: "Tailwind CSS", level: "Proficient" },
-        { name: "Vite", level: "Advanced" }
-      ]
-    },
-    {
-      title: "DevOps & Cloud",
-      description: "Containerization, automated workflows, and production hosting",
-      skills: [
-        { name: "Docker", level: "Proficient" },
-        { name: "GitHub Actions (CI/CD)", level: "Proficient" },
-        { name: "Linux & Shell Scripting", level: "Advanced" },
-        { name: "AWS (S3, EC2)", level: "Working Knowledge" },
-        { name: "Vercel & Render", level: "Advanced" }
-      ]
-    },
-    {
-      title: "Quality & Security",
-      description: "Testing pipelines, cryptographic auth, and defensive coding",
-      skills: [
-        { name: "Vitest & Jest", level: "Advanced" },
-        { name: "JWT & Refresh Rotation", level: "Advanced" },
-        { name: "OAuth 2.0 (Google)", level: "Proficient" },
-        { name: "Helmet & CORS Hardening", level: "Advanced" },
-        { name: "Rate Limiting", level: "Advanced" }
-      ]
+      role: "Backend & Systems Developer",
+      company: "Payment Integrations & Client Systems",
+      period: "2023 — 2024",
+      description:
+        "Built backend microservices integrating Safaricom's M-Pesa DARAJA API for STK Push and instant payment callback reconciliation. Designed relational and document database schemas (PostgreSQL, MongoDB) and refactored monolithic scripts into maintainable, modular REST APIs."
     }
-  ] as SkillCategory[],
+  ] as ExperienceItem[],
 
-  terminalCommands: [
-    {
-      cmd: "whoami",
-      description: "Display engineer profile and mission",
-      output: [
-        "Musa Maxwell (@musaCODEzz)",
-        "Full-Stack Software Engineer based in Nairobi, Kenya.",
-        "Mission: Build bulletproof web systems, developer APIs, and data-driven engines.",
-        "Philosophy: Talk less — Show me the code."
-      ]
-    },
-    {
-      cmd: "projects --featured",
-      description: "List primary production systems",
-      output: [
-        "1. AutoLog KE       -> Kenya's Vehicle Passport & Anti-Clocking Engine (TypeScript/Express/Mongo)",
-        "2. StackPulse       -> Developer Publishing Hub + Swagger UI (Live: blog-api-frontend-neon.vercel.app)",
-        "3. Nexa Kenya       -> Next.js Web Experience Platform (Live: nexa-kenya.vercel.app)",
-        "4. M-Pesa Gateway   -> Safaricom Daraja STK Push & Callback Microservice"
-      ]
-    },
-    {
-      cmd: "tech-stack",
-      description: "Output technical competencies",
-      output: [
-        "[LANGUAGES]   TypeScript, JavaScript, Python, SQL, Solidity",
-        "[BACKEND]     Node.js, Express, Swagger, REST, Webhooks, Vitest",
-        "[DATABASES]   MongoDB, PostgreSQL, Redis",
-        "[FRONTEND]    Next.js, React, Modern CSS3, Vite",
-        "[DEVOPS]      Docker, GitHub Actions, Vercel, Render, Linux"
-      ]
-    },
-    {
-      cmd: "contact",
-      description: "Print reach-out channels",
-      output: [
-        "Email:    musamaxwell15@gmail.com",
-        "GitHub:   https://github.com/musaCODEzz",
-        "LinkedIn: https://www.linkedin.com/in/musaCODEzz",
-        "Twitter:  https://twitter.com/musaCODEzz"
-      ]
-    }
+  socials: [
+    { label: "GitHub", href: "https://github.com/musaCODEzz" },
+    { label: "LinkedIn", href: "https://www.linkedin.com/in/musaCODEzz" },
+    { label: "Twitter / X", href: "https://twitter.com/musaCODEzz" }
   ]
 };
