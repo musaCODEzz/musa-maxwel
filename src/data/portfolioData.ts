@@ -27,13 +27,14 @@ export interface ExperienceItem {
 }
 
 export const PORTFOLIO_DATA = {
-  name: "Musa Maxwell",
+  name: "Musa Maxwel",
   initials: "MM",
   handle: "musaCODEzz",
   title: "Fullstack Engineer & Systems Builder",
   location: "Nairobi, Kenya",
   email: "musamaxwell15@gmail.com",
-  phone: "+254 700 000 000",
+  phone: "+254 795 782 509",
+  whatsappUrl: "https://wa.me/254795782509",
   status: "Available for fullstack & backend roles",
   bioHeadline: "I build systems that scale — from API design and vehicle verification engines to distributed cloud platforms. Based in Nairobi, working with teams across Africa and beyond.",
 
@@ -88,7 +89,7 @@ export const PORTFOLIO_DATA = {
       tags: ["TypeScript", "Express.js", "MongoDB", "Vitest", "Docker"],
       year: "2026",
       githubUrl: "https://github.com/musaCODEzz/autolog-backend",
-      liveUrl: undefined
+      liveUrl: "https://musacodezz.github.io/autolog-backend/"
     },
     {
       number: "02",
@@ -166,7 +167,7 @@ export const PORTFOLIO_DATA = {
 
   socials: [
     { label: "GitHub", href: "https://github.com/musaCODEzz" },
-    { label: "LinkedIn", href: "https://www.linkedin.com/in/musaCODEzz" },
+    { label: "LinkedIn", href: "https://www.linkedin.com/in/musa-maxwel/" },
     { label: "Twitter / X", href: "https://twitter.com/musaCODEzz" }
   ]
 };

@@ -48,6 +48,20 @@ export default function ContactSection() {
               </button>
             </div>
 
+            {/* WhatsApp */}
+            <div className="channel-block">
+              <span className="channel-label">WhatsApp</span>
+              <a
+                href={PORTFOLIO_DATA.whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="channel-value-btn group"
+              >
+                <span>{PORTFOLIO_DATA.phone}</span>
+                <span className="copy-badge">Message me ↗</span>
+              </a>
+            </div>
+
             {/* Location */}
             <div className="channel-block">
               <span className="channel-label">Location</span>
