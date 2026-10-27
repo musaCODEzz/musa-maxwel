@@ -21,7 +21,7 @@ export default function Hero() {
         <h1 className="hero-headline">
           Musa
           <br />
-          <span className="italic-accent">Maxwell</span>
+          <span className="italic-accent">Maxwel</span>
           <span className="dot-primary">.</span>
         </h1>
 
