@@ -66,7 +66,7 @@ export default function ContactSection() {
             <div className="channel-block">
               <span className="channel-label">Location</span>
               <div className="channel-value-text">
-                Nairobi, Kenya (+254)
+                Nairobi, Kenya
               </div>
             </div>
 
