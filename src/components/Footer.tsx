@@ -12,7 +12,7 @@ export default function Footer() {
     <footer className="footer-root">
       <div className="container footer-content">
         <div className="footer-left">
-          © 2026 {PORTFOLIO_DATA.name}. Built with Next.js & deployed on Vercel.
+          © 2026 {PORTFOLIO_DATA.name}. All rights reserved.
         </div>
 
         <div className="footer-right">
