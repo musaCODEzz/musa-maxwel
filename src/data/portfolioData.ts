@@ -150,18 +150,18 @@ export const PORTFOLIO_DATA = {
         "Architecting Kenya's vehicle passport verification platform and developer tooling. Built mathematical anti-clocking algorithms to detect odometer fraud, standardized Kenyan vehicle registration and phone normalization rules, and authored OpenAPI-compliant REST APIs backed by Vitest automated test suites."
     },
     {
-      role: "Full-Stack Engineer",
-      company: "StackPulse & Web Platforms",
+      role: "Software Developer",
+      company: "Namu Cars Ltd",
       period: "2024 — 2025",
       description:
-        "Developed full-stack developer publishing platforms using TypeScript, React, and Node.js. Architected dual JWT authentication flows with refresh token rotation, integrated Google OAuth 2.0, built live Swagger UI suites, and deployed zero-downtime CI/CD workflows across Vercel and Render."
+        "Designed and deployed scalable web applications using Python (Flask), React.js, and Node.js, managing containerized environments with Docker to support over 10,000 users. Automated deployment workflows with GitHub Actions and Jenkins, cutting release cycle times by 20%."
     },
     {
-      role: "Backend & Systems Developer",
-      company: "Payment Integrations & Client Systems",
+      role: "Data & Marketing Researcher",
+      company: "KOKO Networks",
       period: "2023 — 2024",
       description:
-        "Built backend microservices integrating Safaricom's M-Pesa DARAJA API for STK Push and instant payment callback reconciliation. Designed relational and document database schemas (PostgreSQL, MongoDB) and refactored monolithic scripts into maintainable, modular REST APIs."
+        "Developed automated data processing scripts with Python (Pandas) and SQL, building analytical pipelines and internal dashboards across 20+ operational stakeholders. Contributed to data migration tasks and AWS cloud workflows aligned with DevOps best practices."
     }
   ] as ExperienceItem[],
 
