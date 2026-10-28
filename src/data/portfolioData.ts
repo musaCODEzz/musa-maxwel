@@ -167,7 +167,7 @@ export const PORTFOLIO_DATA = {
 
   socials: [
     { label: "GitHub", href: "https://github.com/musaCODEzz" },
-    { label: "LinkedIn", href: "https://www.linkedin.com/in/musa-maxwel/" },
+    { label: "LinkedIn", href: "https://www.linkedin.com/in/musa-maxwel" },
     { label: "Twitter / X", href: "https://twitter.com/musaCODEzz" }
   ]
 };

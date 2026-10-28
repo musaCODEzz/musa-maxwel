@@ -79,7 +79,7 @@ export default function ContactSection() {
                     key={s.label}
                     href={s.href}
                     target="_blank"
-                    rel="noopener noreferrer"
+                    rel="noopener"
                     className="social-anchor"
                   >
                     {s.label}
