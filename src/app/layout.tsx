@@ -34,6 +34,11 @@ export const metadata: Metadata = {
     description: "Building resilient web applications, anti-fraud systems, and scalable APIs in Nairobi, Kenya.",
     creator: "@musaCODEzz",
   },
+  icons: {
+    icon: "/icon.svg",
+    shortcut: "/icon.svg",
+    apple: "/icon.svg",
+  },
 };
 
 export const viewport: Viewport = {
